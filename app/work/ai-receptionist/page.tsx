@@ -76,8 +76,8 @@ export default function ReceptionistCaseStudy() {
         <h1>Front Desk — an AI receptionist for small businesses</h1>
         <div className="role">Answers, books, and captures leads — end to end.</div>
         <p className="lead">
-          Small businesses miss calls and messages. Front Desk is a receptionist you drop onto a
-          site: it chats with visitors, answers from the business&apos;s own information, books real
+          Small businesses miss calls and messages. Front Desk is a website receptionist you drop
+          onto a site: it chats with visitors, answers from the business&apos;s own information, books real
           appointments, and captures leads when someone isn&apos;t ready yet — then hands all of it
           to an owner dashboard. It&apos;s multi-tenant and runs entirely on free infrastructure.
         </p>
@@ -145,10 +145,11 @@ export default function ReceptionistCaseStudy() {
       <section className="case-sec">
         <div className="label">What&apos;s next</div>
         <p>
-          The natural next slice is an embeddable widget — one script tag that drops a floating chat
-          bubble onto any website, sandboxed in an iframe — so a business installs it without sending
-          visitors to a separate page. Self-service onboarding (sign up, configure, get your snippet)
-          follows from there.
+          Voice is the obvious next channel — today it handles website chat; a real phone line would
+          sit on top of the same brain (the booking, knowledge, and lead logic don&apos;t change), but
+          it needs a paid telephony layer, so I scoped it out to keep everything on free
+          infrastructure. Beyond that: an embeddable widget (one script tag → a chat bubble on any
+          site) and self-service onboarding.
         </p>
       </section>
 
