@@ -8,6 +8,7 @@ export const profile = {
   email: "butnande.johnmicky@gmail.com",
   github: "https://github.com/jmikeyey",
   linkedin: "https://www.linkedin.com/in/jmickybutnande/",
+  resume: "/butnande-resume.pdf",
 } as const;
 
 export type Project = {
@@ -18,10 +19,29 @@ export type Project = {
   stack: string[];
   demo?: string;
   code?: string;
+  caseStudy?: string;
 };
 
-// Intentionally empty for now — projects get added here as they ship.
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    title: "Front Desk — AI Receptionist",
+    tag: "Full-stack · AI",
+    status: "Live",
+    blurb:
+      "A multi-tenant AI receptionist businesses can put on their site. It answers from the business's own knowledge base, books appointments (timezone-correct, no double-booking), and captures leads — all handed to an owner dashboard. Built end-to-end on free infrastructure.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Postgres + pgvector",
+      "Drizzle",
+      "Supabase Auth",
+      "Vercel AI SDK",
+      "Groq",
+    ],
+    demo: "https://ai-receptionist-eta-three.vercel.app",
+    caseStudy: "/work/ai-receptionist",
+  },
+];
 
 export type Job = { when: string; role: string; org: string; blurb: string };
 

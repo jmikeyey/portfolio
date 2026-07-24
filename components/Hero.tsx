@@ -25,6 +25,11 @@ export default function Hero() {
             linkedin <span className="arw" aria-hidden="true">↗</span>
           </a>
         )}
+        {profile.resume && (
+          <a href={profile.resume} target="_blank" rel="noreferrer">
+            résumé <span className="arw" aria-hidden="true">↗</span>
+          </a>
+        )}
       </div>
     </header>
   );
