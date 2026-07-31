@@ -234,6 +234,18 @@ footer {
 .case-sec > p { color: #33363B; max-width: 62ch; font-size: 1.04rem; }
 .codenote { margin-top: 18px; }
 
+.snippet {
+  margin: 18px 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: #FAFAF9;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #33363B;
+}
+
 .shot { margin: 44px 0 0; }
 .shot img {
   width: 100%; height: auto; display: block;

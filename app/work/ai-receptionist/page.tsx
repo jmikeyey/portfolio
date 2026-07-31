@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const DEMO = "https://ai-receptionist-eta-three.vercel.app";
+const DEMO_BUSINESS_ID = "9647904b-fd37-4960-b10b-e1c7f58c752b";
 
 const decisions: { h: string; p: string }[] = [
   {
@@ -76,9 +78,9 @@ export default function ReceptionistCaseStudy() {
         <h1>Front Desk — an AI receptionist for small businesses</h1>
         <div className="role">Answers, books, and captures leads — end to end.</div>
         <p className="lead">
-          Small businesses miss calls and messages. Front Desk is a website receptionist you drop
-          onto a site: it chats with visitors, answers from the business&apos;s own information, books real
-          appointments, and captures leads when someone isn&apos;t ready yet — then hands all of it
+          Small businesses miss calls and messages. Front Desk gives each business a hosted chat page
+          it can link from its site: it chats with visitors, answers from the business&apos;s own information,
+          books real appointments, and captures leads when someone isn&apos;t ready yet — then hands all of it
           to an owner dashboard. It&apos;s multi-tenant and runs entirely on free infrastructure.
         </p>
         <div className="links">
@@ -91,6 +93,21 @@ export default function ReceptionistCaseStudy() {
           walk through it on a call.
         </p>
       </header>
+
+      <section className="case-sec">
+        <div className="label">Try it in the corner of this page</div>
+        <p>
+          That chat bubble belongs to Bright Smile Dental, the demo clinic — not to me. This page
+          loads it exactly the way a customer&apos;s own site would, with one script tag:
+        </p>
+        <pre className="snippet">
+          {`<script src="${DEMO}/embed.js" data-business-id="…" defer></script>`}
+        </pre>
+        <p>
+          The script injects the launcher and only loads the chat on first open, so an unopened
+          widget costs the host page nothing.
+        </p>
+      </section>
 
       <Shot
         src="/receptionist-landing.png"
@@ -148,8 +165,7 @@ export default function ReceptionistCaseStudy() {
           Voice is the obvious next channel — today it handles website chat; a real phone line would
           sit on top of the same brain (the booking, knowledge, and lead logic don&apos;t change), but
           it needs a paid telephony layer, so I scoped it out to keep everything on free
-          infrastructure. Beyond that: an embeddable widget (one script tag → a chat bubble on any
-          site) and self-service onboarding.
+          infrastructure. Beyond that: self-service onboarding.
         </p>
       </section>
 
@@ -157,6 +173,12 @@ export default function ReceptionistCaseStudy() {
         <Link href="/">← back to portfolio</Link>
         <span>Cebu · 2026</span>
       </footer>
+
+      <Script
+        src={`${DEMO}/embed.js`}
+        data-business-id={DEMO_BUSINESS_ID}
+        strategy="afterInteractive"
+      />
     </div>
   );
 }

@@ -28,7 +28,7 @@ export const projects: Project[] = [
     tag: "Full-stack · AI",
     status: "Live",
     blurb:
-      "A multi-tenant AI receptionist businesses can put on their site. It answers from the business's own knowledge base, books appointments (timezone-correct, no double-booking), and captures leads — all handed to an owner dashboard. Built end-to-end on free infrastructure.",
+      "A multi-tenant AI receptionist. Each business gets a hosted chat page that answers from its own knowledge base, books appointments (timezone-correct, no double-booking), and captures leads — all handed to an owner dashboard. Built end-to-end on free infrastructure.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -40,6 +40,23 @@ export const projects: Project[] = [
     ],
     demo: "https://ai-receptionist-eta-three.vercel.app",
     caseStudy: "/work/ai-receptionist",
+  },
+  {
+    title: "AquaLoop — Water Delivery & Loyalty",
+    tag: "Full-stack",
+    status: "Live",
+    blurb:
+      "An admin dashboard for a water delivery business: customers, daily can orders, automatic cashback, and sales reporting — plus a public page where customers check their balance by mobile number. Cashback is a signed ledger, and the rules that must never break (no overdrawn redemption, no order without its cashback) are enforced inside Postgres.",
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Postgres + RLS",
+      "Supabase Auth",
+      "Tailwind + shadcn/ui",
+      "Vercel",
+    ],
+    demo: "https://aqualoop-plum.vercel.app",
+    caseStudy: "/work/aqualoop",
   },
 ];
 
