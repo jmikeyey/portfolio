@@ -58,6 +58,23 @@ export const projects: Project[] = [
     demo: "https://aqualoop-plum.vercel.app",
     caseStudy: "/work/aqualoop",
   },
+  {
+    title: "Katig — BPO Landing Page",
+    tag: "Front-end · design",
+    status: "Live",
+    blurb:
+      "A marketing site for a fictional Cebu BPO, built as a self-directed sample — the company, the brand, and every claim on the page are invented. What's real is the craft: a name and a mark drawn from the outrigger of a bangka, an above-the-fold that states the offer and its proof side by side, sections ordered as a buyer's objections, and a hero background drawn on canvas at device resolution instead of shipped as an image.",
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Hand-written CSS",
+      "Canvas 2D",
+      "next/font",
+      "Vercel",
+    ],
+    demo: "https://katig-bpo.vercel.app",
+    caseStudy: "/work/katig",
+  },
 ];
 
 export type Job = { when: string; role: string; org: string; blurb: string };
