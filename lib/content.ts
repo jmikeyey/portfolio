@@ -85,7 +85,7 @@ export const experience: Job[] = [
     role: "Full-Stack Developer",
     org: "Tolstoy",
     blurb:
-      "Shipped an AI support chatbot that cut ticket volume ~30%. Improved virtual try-on adherence from 46% → 75% with an LLM-as-judge eval pipeline. Built a Model Context Protocol (MCP) server that exposes core Tolstoy platform workflows as tools, so AI assistants can drive them directly. Deployed containerized AI services on AWS ECS behind an ALB.",
+      "Sole maintainer of the AI shopping assistant embedded in merchant storefronts, including Culture Kings (~300k shoppers). Improved virtual try-on adherence from 46% → 75% with an LLM-as-judge eval pipeline. Built a Model Context Protocol (MCP) server that exposes core Tolstoy platform workflows as tools, so AI assistants can drive them directly. Deployed containerized AI services on AWS ECS behind an ALB.",
   },
   {
     when: "2024 — 2025",
