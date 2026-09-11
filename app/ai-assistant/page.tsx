@@ -20,7 +20,7 @@ export default function AiAssistantPage() {
       <Script
         src={`${DEMOS.frontDesk}/embed.js`}
         data-business-id={FRONT_DESK_DEMO_BUSINESS_ID}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
     </>
   );
