@@ -12,7 +12,7 @@ export const profile = {
   name: "John Micky Butnande",
   shortName: "John Micky",
   subtitle: "Developer · Cebu, Philippines · works remotely",
-  bio: "I'm a developer at Tolstoy, where I look after the AI shopping assistant that runs on online stores, including Culture Kings and its roughly 300,000 shoppers. Before that I was the founding engineer at Framework, where I built an AI agent that processed 200+ Slack and Gmail messages a day.",
+  bio: "I'm a developer at Tolstoy, where I look after the AI shopping assistant that runs on online stores, including Culture Kings and its roughly 300,000 shoppers. I was also the founding engineer at Framework, where I built an AI agent that processed 200+ Slack and Gmail messages a day.",
   photo: "/john-micky-butnande.jpg",
   email: "butnande.johnmicky@gmail.com",
   github: "https://github.com/jmikeyey",
