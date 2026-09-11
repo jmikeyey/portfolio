@@ -54,7 +54,8 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
                 width={1280}
                 height={860}
                 sizes="(max-width: 1199px) 100vw, 1016px"
-                preload
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           ) : (

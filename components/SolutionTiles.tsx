@@ -25,7 +25,8 @@ export default function SolutionTiles() {
                 width={1280}
                 height={860}
                 sizes="(max-width: 639px) 160vw, (max-width: 1023px) 80vw, 470px"
-                preload={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
               />
             ) : (
               <FlowChips steps={solution.tile.visual.steps} className="tile-flow" />
