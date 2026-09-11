@@ -14,6 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: { google: "nCr3_4UG2fM_HxwgJE0BJ9OOa3ltZbFM1U55cDaj02s" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
