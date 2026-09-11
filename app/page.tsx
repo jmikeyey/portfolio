@@ -1,35 +1,42 @@
-import Hero from "@/components/Hero";
-import SelectedWork from "@/components/SelectedWork";
-import Experience from "@/components/Experience";
-import Stack from "@/components/Stack";
-import Writing from "@/components/Writing";
+import type { Metadata } from "next";
+import AboutCard from "@/components/AboutCard";
 import Contact from "@/components/Contact";
-import { profile } from "@/lib/content";
+import JsonLd from "@/components/JsonLd";
+import SiteFooter from "@/components/SiteFooter";
+import SiteNav from "@/components/SiteNav";
+import SolutionTiles from "@/components/SolutionTiles";
+import WorkingSteps from "@/components/WorkingSteps";
+import { home } from "@/lib/content";
+import { pageMetadata, personJsonLd, websiteJsonLd } from "@/lib/seo";
 
-export default function Home() {
+export const metadata: Metadata = pageMetadata({ path: "/", title: home.seoTitle, description: home.side });
+
+export default function HomePage() {
   return (
-    <div className="page">
-      <div className="topbar">
-        <span className="brand">john&nbsp;micky&nbsp;butnande</span>
-        <nav>
-          <a href="#work">work</a>
-          <a href="#experience">experience</a>
-          <a href="#writing">writing</a>
-          <a href="#contact">contact</a>
-        </nav>
-      </div>
-
-      <Hero />
-      <SelectedWork />
-      <Experience />
-      <Stack />
-      <Writing />
-      <Contact />
-
-      <footer>
-        <span>{profile.name}</span>
-        <span>Cebu · 2026</span>
-      </footer>
+    <div className="shell">
+      <JsonLd data={personJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
+      <SiteNav />
+      <main>
+        <header className="home-hero rise">
+          <h1 className="home-h1">
+            {home.h1Top}
+            <br />
+            <span className="mark">{home.h1Highlight}</span>
+          </h1>
+          <div className="home-side">
+            <p>{home.side}</p>
+            <a href="#contact" className="btn">
+              Start a project →
+            </a>
+          </div>
+        </header>
+        <SolutionTiles />
+        <WorkingSteps />
+        <AboutCard />
+        <Contact heading={home.contactHeading} defaultService="not-sure" />
+      </main>
+      <SiteFooter />
     </div>
   );
 }

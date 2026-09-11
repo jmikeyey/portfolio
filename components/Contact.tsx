@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { profile } from "@/lib/content";
+import { SERVICE_LABELS, SERVICE_VALUES, type ServiceValue } from "@/lib/services";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export default function Contact() {
+export default function Contact({ heading, defaultService }: { heading: string; defaultService: ServiceValue }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
@@ -15,15 +16,23 @@ export default function Contact() {
     setError("");
 
     const form = new FormData(e.currentTarget);
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.get("name"),
-        email: form.get("email"),
-        message: form.get("message"),
-      }),
-    });
+    let res: Response;
+    try {
+      res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.get("name"),
+          email: form.get("email"),
+          message: form.get("message"),
+          service: form.get("service"),
+        }),
+      });
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setStatus("error");
+      return;
+    }
 
     if (res.ok) {
       setStatus("sent");
@@ -35,36 +44,62 @@ export default function Contact() {
   }
 
   return (
-    <section className="block fade" id="contact">
-      <div className="label">Contact</div>
-      <p className="note" style={{ marginBottom: "22px" }}>
-        Have something to build, or just want to talk shop? Email me at{" "}
-        <a href={`mailto:${profile.email}`}>{profile.email}</a> — or leave a note.
-      </p>
+    <section id="contact" className="contact">
+      <div>
+        <p className="eyebrow eyebrow-on-dark">Start a project</p>
+        <h2 className="h2">{heading}</h2>
+        <p className="contact-lead">
+          Tell me in plain words. You don&apos;t need to know anything technical, and I&apos;ll tell you what I&apos;d build.
+        </p>
+        <a className="contact-mail" href={`mailto:${profile.email}`}>
+          {profile.email}
+        </a>
+      </div>
 
       {status === "sent" ? (
-        <p className="note">Thanks — your note’s on its way. I’ll get back to you soon.</p>
+        <p className="contact-sent" role="status">
+          Thanks — your note’s on its way. I’ll get back to you soon.
+        </p>
       ) : (
-        <form className="contact-grid" onSubmit={onSubmit}>
-          <div className="field">
-            <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
+        <form className="contact-form" onSubmit={onSubmit}>
+          <fieldset className="chips">
+            <legend>What do you need?</legend>
+            <div className="chip-list">
+              {SERVICE_VALUES.map((value) => (
+                <label key={value} className="chip">
+                  <input type="radio" name="service" value={value} defaultChecked={value === defaultService} required />
+                  <span>{SERVICE_LABELS[value]}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <div className="field-row">
+            <div className="field">
+              <label htmlFor="contact-name">Your name</label>
+              <input id="contact-name" name="name" type="text" required />
+            </div>
+            <div className="field">
+              <label htmlFor="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" required />
+            </div>
           </div>
           <div className="field">
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          </div>
-          <div className="field">
-            <label htmlFor="msg">Message</label>
-            <textarea id="msg" name="message" rows={4} placeholder="What’s on your mind?" required />
+            <label htmlFor="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows={4}
+              placeholder="We track orders in a group chat and keep losing them…"
+              required
+            />
           </div>
           {error && (
-            <p className="note" role="alert" style={{ color: "#B4453A" }}>
+            <p className="contact-error" role="alert">
               {error}
             </p>
           )}
-          <button className="btn primary" type="submit" disabled={status === "sending"}>
-            {status === "sending" ? "Sending…" : "Send note"}
+          <button className="btn btn-amber" type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending…" : "Send message →"}
           </button>
         </form>
       )}

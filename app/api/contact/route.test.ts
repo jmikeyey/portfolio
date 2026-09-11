@@ -12,7 +12,12 @@ function req(body: unknown) {
   });
 }
 
-const valid = { name: "Ada", email: "ada@example.com", message: "Hello, I'd like to work with you." };
+const valid = {
+  name: "Ada",
+  email: "ada@example.com",
+  message: "Hello, I'd like to work with you.",
+  service: "website",
+};
 
 beforeEach(() => sendContactEmail.mockReset());
 
@@ -20,6 +25,15 @@ describe("POST /api/contact", () => {
   it("returns 400 on invalid input and does not send", async () => {
     const res = await POST(req({ name: "", email: "", message: "hi" }));
     expect(res.status).toBe(400);
+    expect(sendContactEmail).not.toHaveBeenCalled();
+  });
+
+  it("returns 400 when the service is missing and does not send", async () => {
+    const res = await POST(
+      req({ name: "Ada", email: "ada@example.com", message: "Hello, I'd like to work with you." }),
+    );
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ error: "Please choose what you need." });
     expect(sendContactEmail).not.toHaveBeenCalled();
   });
 
